@@ -173,3 +173,5 @@ ENV/
 /site
 
 # End of https://www.gitignore.io/api/python,django,intellij
+
+*/migrations/*
