@@ -1,6 +1,5 @@
 """producers_api views."""
-from rest_framework import viewsets
-# from rest_framework_apicontrol.permissions import HasApiKeyPermission
+from rest_framework.viewsets import ModelViewSet
 from .models import (
     Producer,
     ProductType,
@@ -15,21 +14,21 @@ from .serializers import (
 )
 
 
-class ProducerViewSet(viewsets.ModelViewSet):
+class ProducerViewSet(ModelViewSet):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
 
 
-class ProductTypeViewSet(viewsets.ModelViewSet):
+class ProductTypeViewSet(ModelViewSet):
     queryset = ProductType.objects.all()
     serializer_class = ProductTypeSerializer
 
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
-class ProductPresentationViewSet(viewsets.ModelViewSet):
+class ProductPresentationViewSet(ModelViewSet):
     queryset = ProductPresentation.objects.all()
     serializer_class = ProductPresentationSerializer
