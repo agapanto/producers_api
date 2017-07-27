@@ -30,3 +30,8 @@ class ProductPresentationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductPresentation
         fields = '__all__'
+
+
+# CSV IMPORT SERIALIZERS
+class ProductsByProducerSerializer(serializers.Serializer):
+    pass

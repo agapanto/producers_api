@@ -21,6 +21,7 @@ from .views import (
     ProductTypeViewSet,
     ProductViewSet,
     ProductPresentationViewSet,
+    ProductsByProducerApiView,
 )
 
 router = routers.DefaultRouter()
@@ -32,4 +33,5 @@ router.register(r'productpresentations', ProductPresentationViewSet)
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),
+    url(r'^api/products_import/$', ProductsByProducerApiView.as_view()),
 ]

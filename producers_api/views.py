@@ -1,4 +1,6 @@
 """producers_api views."""
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from .models import (
     Producer,
@@ -32,3 +34,14 @@ class ProductViewSet(ModelViewSet):
 class ProductPresentationViewSet(ModelViewSet):
     queryset = ProductPresentation.objects.all()
     serializer_class = ProductPresentationSerializer
+
+
+# CSV IMPORT ENDPOINTS
+class ProductsByProducerApiView(APIView):
+    def get(self, request, format=None):
+        """Return a list of all imports."""
+        return Response({})
+
+    def post(self, request, format=None):
+        """Import a csv file."""
+        return Response({})
