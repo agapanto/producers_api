@@ -34,4 +34,11 @@ class ProductPresentationSerializer(serializers.ModelSerializer):
 
 # CSV IMPORT SERIALIZERS
 class ProductsByProducerSerializer(serializers.Serializer):
-    pass
+    product_type_name = serializers.CharField(source='TIPO')
+    product_name = serializers.CharField(source='PRODUCTO')
+    producer_name = serializers.CharField(source='PRODUCTOR')
+    # producer_name = serializers.CharField(source='CANTIDAD')
+    product_presentation_name = serializers.CharField(source='UNIDAD')
+    product_presentation_price = serializers.FloatField(source='PRECIO')
+    # producer_name = serializers.CharField(source='PRECIO TOTAL')
+    product_presentation_description = serializers.CharField(source='OBSERVACIONES')

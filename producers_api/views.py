@@ -42,6 +42,7 @@ class ProductsByProducerApiView(APIView):
         """Return a list of all imports."""
         return Response({})
 
-    def post(self, request, format=None):
+    def post(self, request, *args, **kwargs):
         """Import a csv file."""
+
         return Response({})
