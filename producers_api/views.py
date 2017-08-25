@@ -1,4 +1,5 @@
 """producers_api views."""
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
@@ -13,6 +14,7 @@ from .serializers import (
     ProductTypeSerializer,
     ProductSerializer,
     ProductPresentationSerializer,
+    ProductsByProducerSerializer,
 )
 
 
@@ -44,5 +46,27 @@ class ProductsByProducerApiView(APIView):
 
     def post(self, request, *args, **kwargs):
         """Import a csv file."""
+
+        invalid_rows = []
+        valid_rows = []
+
+        for row in request.data.get('data'):
+            row_data = {
+                'product_type_name': row.get('TIPO'),
+                'product_name': row.get('PRODUCTO'),
+                'producer_name': row.get('PRODUCTOR'),
+                'product_presentation_name': row.get('UNIDAD'),
+                'product_presentation_price': row.get('PRECIO'),
+                'product_presentation_description': row.get('OBSERVACIONES')
+            }
+
+            serializer = ProductsByProducerSerializer(
+                data=row_data
+            )
+
+            if serializer.is_valid():
+                valid_rows.append(row)
+            else:
+                invalid_rows.append(row)
 
         return Response({})
