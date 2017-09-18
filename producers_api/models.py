@@ -2,12 +2,15 @@
 from django.conf import settings
 from django.db import models
 
+
 class Producer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    name = models.CharField(max_length=100)
+
     def __str__(self):
-        return str(self.contact_email)+" - "+str(self.created_at)
+        return str(self.name)+" - "+str(self.created_at)
 
 
 class ProductType(models.Model):
@@ -17,7 +20,7 @@ class ProductType(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return str(self.contact_email)+" - "+str(self.created_at)
+        return str(self.name)+" - "+str(self.created_at)
 
 
 class Product(models.Model):
@@ -28,7 +31,7 @@ class Product(models.Model):
     producer = models.ForeignKey(Producer)
 
     def __str__(self):
-        return str(self.contact_email)+" - "+str(self.created_at)
+        return str(self.name)+" - "+str(self.created_at)
 
 
 class ProductPresentation(models.Model):
@@ -41,4 +44,4 @@ class ProductPresentation(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return str(self.contact_email)+" - "+str(self.created_at)
+        return str(self.name)+" - "+str(self.created_at)
