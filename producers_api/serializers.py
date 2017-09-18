@@ -39,6 +39,6 @@ class ProductsByProducerSerializer(serializers.Serializer):
     producer_name = serializers.CharField()
     # producer_name = serializers.CharField()
     product_presentation_name = serializers.CharField()
-    product_presentation_price = serializers.IntegerField()
+    product_presentation_price = serializers.FloatField()
     # producer_name = serializers.CharField()
     product_presentation_description = serializers.CharField(required=False, allow_blank=True, allow_null=True)

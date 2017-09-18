@@ -65,8 +65,19 @@ class ProductsByProducerApiView(APIView):
             )
 
             if serializer.is_valid():
-                valid_rows.append(row)
+                valid_rows.append(serializer.validated_data)
             else:
-                invalid_rows.append(row)
+                invalid_rows.append(serializer.validated_data)
 
-        return Response({})
+        for row in valid_rows:
+            product_type, created = ProductType.objects.get_or_create(name=row.get('product_type_name'))
+            producer, created = Producer.objects.get_or_create(name=row.get('producer_name'))
+            product, created = Product.objects.get_or_create(name=row.get('product_name'), producer=producer)
+            product, created = ProductPresentation.objects.get_or_create(name=row.get('product_presentation_name'), product=product, price=row.get('product_presentation_price'), description=row.get('product_presentation_description'))
+
+        return Response(
+            {
+                "valid": valid_rows,
+                "invalid": invalid_rows
+            }
+        )
