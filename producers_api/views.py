@@ -4,18 +4,32 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from .models import (
+    ProducerType,
+    ProducerStatus,
     Producer,
     ProductType,
     Product,
     ProductPresentation,
 )
 from .serializers import (
+    ProducerTypeSerializer,
+    ProducerStatusSerializer,
     ProducerSerializer,
     ProductTypeSerializer,
     ProductSerializer,
     ProductPresentationSerializer,
     ProductsByProducerSerializer,
 )
+
+
+class ProducerTypeViewSet(ModelViewSet):
+    queryset = ProducerType.objects.all()
+    serializer_class = ProducerTypeSerializer
+
+
+class ProducerStatusViewSet(ModelViewSet):
+    queryset = ProducerStatus.objects.all()
+    serializer_class = ProducerStatusSerializer
 
 
 class ProducerViewSet(ModelViewSet):
