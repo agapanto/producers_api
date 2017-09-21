@@ -9,9 +9,14 @@ from .models import (
 
 
 class ProducerSerializer(serializers.ModelSerializer):
+    products_count = serializers.SerializerMethodField()
+
     class Meta:
         model = Producer
         fields = '__all__'
+
+    def get_products_count(self, obj):
+        return obj.product_set.count()
 
 
 class ProductTypeSerializer(serializers.ModelSerializer):
