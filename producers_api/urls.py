@@ -27,6 +27,9 @@ from products.views import (
     ProductPresentationViewSet,
     ProductsByProducerApiView,
 )
+from stores.views import (
+    StoreViewSet,
+)
 
 router = routers.DefaultRouter()
 router.register(r'producer_types', ProducerTypeViewSet)
@@ -35,6 +38,7 @@ router.register(r'producers', ProducerViewSet)
 router.register(r'producttypes', ProductTypeViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'productpresentations', ProductPresentationViewSet)
+router.register(r'stores', StoreViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
