@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
-from .views import (
+from producers.views import (
     ProducerTypeViewSet,
     ProducerStatusViewSet,
     ProducerViewSet,
+)
+from products.views import (
     ProductTypeViewSet,
     ProductViewSet,
     ProductPresentationViewSet,
